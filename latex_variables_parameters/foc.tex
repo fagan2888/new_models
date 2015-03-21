@@ -1,0 +1,117 @@
+\documentclass[document.tex]{subfiles}
+\begin{document}
+\subsection*{First Order Conditions:}
+\subsubsection*{Households}
+\begin{align*}
+u_t &= c_t^{\nu_{EZ}} \lb 1- L\rb ^{(1-\nu_{EZ})} \\ 
+ev_t &= v_{t+1}^{1-\gamma_{EZ}} \\  
+v_t &= (1-\beta) u_t^{\frac{1-\gamma_{EZ}}{\theta_{EZ}}} 
++ \beta \lb ev_t^{\frac{1}{\theta_{EZ}}} \rb ^{\frac{\theta_{EZ}}{1-\gamma_{EZ}}} \\
+\frac{1-\nu_{EZ}}{\nu_{EZ}} \frac{c_t}{1-L_t} &= P_m (1-\alpha) \frac{Y_t}{L_t} \\
+\Lambda_t &= \lb \frac{u_{t+1}}{u_t} \rb ^{\frac{1-\gamma_{EZ}}{\theta_{EZ}}}
+\frac{c_t}{c_{t+1}} \lb v_{t+1}^{\frac{1-\gamma_{EZ}}{ev_t}}\rb ^{1-\frac{1}{\theta_{EZ}}}\\
+\beta \Lambda_t  R_{t+1}&= 1
+\end{align*}
+
+\subsubsection*{Financial Intermediaries}
+\begin{align*}
+\nu_t     &=   (1-\theta) \beta \Lambda_{t+1} (R_{k,t+1} - R_t) + \beta \Lambda_{t+1} \theta x_{t+1} \nu_{t+1} \\
+\eta_t    &=   (1-\theta)+\beta \Lambda_{t+1} \theta z_{t+1} \eta_{t+1} \\
+\phi_t &= \frac{\eta_t}{\lambda - \nu_t} \\
+z_t &= (R_{k,t+1} - R_t) \phi_{t-1} + R_{t-1} \\
+x_t &= \frac{\phi_t}{\phi_{t-1}} z_t \\
+Q_t K_t &= \phi_t N_t \\
+N_t &= N_{et} + N_{nt} \\
+N_{et} &= \theta z_t N_{t-1} (-e_{Ne, t})\\
+N_{nt} &= \omega Q_t \xi_t K_{t-1} 
+\end{align*}
+
+\subsubsection*{Final good producer}
+\begin{align*}
+R_{k,t} = P_{mt} \alpha \frac{Y_{mt}}{K_{t-1}} + \xi_t \frac{Q_t-\delta_t}{Q_{t-1}} \\
+Y_{mt} = a_t \xi_t U_t K_{t-1}^{\alpha} L_t^{1-\alpha} 
+\end{align*}
+
+\subsubsection*{Capital Good Producer}
+\begin{align*}
+Q_t &= 1 + \frac{\eta_i}{2}  \lb \frac{I_n + I_{ss}}{I_{n,\tau -1}+I_{ss}}-1 \rb^2 
++ \eta_i   \lb \frac{I_n + I_{ss}}{I_{n,\tau -1}+I_{ss}}-1 \rb  \frac{I_n + I_{ss}}{I_{n,\tau -1}+I_{ss}} \\
+&- \beta \Lambda_{t+1} \eta_i  \lb \frac{I_n + I_{ss}}{I_n+I_{ss}}-1 \rb
+\lb \frac{I_n + I_{ss}}{I_n+I_{ss}} \rb ^2 \\
+\delta_t &= \delta_c + \frac{b}{1+\zeta} U_t^{1+\zeta} \\
+P_{mt} \alpha \frac{Y_{m,t}}{U_t} &= b U_t^{\zeta} \xi_t K_{t-1} \\
+In &= I_t - \delta-t \xi_t K_{t-1} \\
+K_t &= \xi_t K_{t-1} + In\\
+G_t &= G_{ss} g_t \\
+\end{align*}
+
+\subsubsection*{Equilibrium}
+\begin{align*}
+Y_t &= c_t + G_t I_t + \frac{\eta_i}{2} \lb \frac{I_n + I_{ss}}{I_{n,t-1}+I_{ss}}-1\rb^2 \lb I_n+ I_{ss}\rb \\
+Y_{mt} &= Y_t D_t \\
+D_t &= \gamma D_{t-1} \pi_{t-1}^{-\gamma_P \epsilon} \pi^{\epsilon} 
++ \lb 1- \gamma \rb 
+\lb \frac{
+1-\gamma \pi_{t-1}^{\gamma_P \lb 1-\gamma \rb}
+\pi^{\gamma-1}}
+{1-\gamma} \rb^{\frac{-\epsilon}{1-\gamma}}   \\
+% 26
+x_t &= \frac{1}{P_{mt}} \\
+F_t &= Y_t P_{mt}+ \beta \gamma \Lambda_{t+1} \pi_{t+1}^{\epsilon} \pi^{-\epsilon \gamma_P} F_{t+1} \\
+% 27
+Z_t &= Y_t + \beta  \gamma  \Lambda_{t+1} \pi_{t+1}^{\epsilon-1} 
+\pi_t^{\gamma_P \lb 1-\epsilon\rb} Z_{t+1} \\
+% 28
+\pi_t^* &= \frac{\epsilon}{\epsilon-1} \frac{F_t}{Z_t}  \pi_t\\
+% 29 
+\pi^{1-\epsilon} &= \gamma \pi_{t-1}^{\gamma_P \lb 1-\epsilon \rb} + \lb 1- \gamma \rb \lb \pi_t^*\rb ^{1- \epsilon} \\
+% 30
+i_t &= R_t \pi_{t+1} \\
+% 31
+i_t &= i_{t-1}^{\rho_i}
+\lb 
+\frac{1}{\beta} \pi_t^{\kappa_{\pi}}
+\lb
+\frac{X_t}{\frac{\epsilon}{\epsilon-1}} 
+\rb^{\kappa_y}
+\rb ^{1-\rho_i} e_{it}
+\end{align*}
+\subsubsection*{shocks}
+\begin{align*}
+% 32
+a &= \rho_a a_{t-1} - e_a \\
+% 33
+\xi_t &= \rho_{\xi} \xi_{t-1} - e_{\xi} \\
+% 34
+g_t &= \rho_g *g_{t-1} \\
+% 35
+K_{eff, t} &= \xi_t K_{t-1} \\
+% 36
+w_t &= P_{mt} \lb 1 - \alpha \rb \frac{Y_t}{L_t} \\
+% 37
+VMPK_t &= P_{mt} \alpha \frac{Y}{\xi_t K_{t-1}} \\
+% 38
+W_{elf,t} &=  \log \lb C_t - hh C_{t-1} \rb 
+- \frac{\chi L_t^{1+\varphi}}{1+\varphi} + \beta * W_{elf,t+1}  \\
+% 39
+prem &= \frac{R_{k,t+1}}{R_t} 
+\end{align*}
+
+
+\begin{comment}
+%parameters betta sig hh varphi zetta theta alfa G_over_Y eta_i epsilon gam gam_P kappa_pi kappa_y rho_i rho_ksi sigma_ksi rho_a sigma_a rho_g sigma_g sigma_Ne sigma_i rho_shock_psi sigma_psi kappa tau omega lambda chi b delta_c G_ss I_ss nuEZ psiEZ gammaEZ thetaEZ;
+
+% var Y Ym K Keff L I C G Q Lambda Rk R N Ne Nn nu eta phi z x Pm w VMPK U X D F Z i prem delta In Welf a ksi g infl inflstar 
+% u ev v ;
+% varexo e_a e_ksi e_g e_Ne e_i ;
+
+//Shocks
+//38. Welfare
+Welf   =   log(exp(C)-hh*exp(C(-1)))
+-chi*exp(L)^(1+varphi)/(1+varphi)+betta*Welf(+1);
+
+//39. Premium
+exp(prem)   =   exp(Rk(+1))/exp(R);
+
+\end{comment}
+\end{document}

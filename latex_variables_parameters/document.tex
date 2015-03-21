@@ -1,0 +1,28 @@
+%this is my templet for the Statistics assignments.
+% all the packages loading and layout is done in the document file.
+% the actuall content is in the content.Rnw file.
+\documentclass{article}
+\author{}
+\title{}
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{10in}
+\setlength{\oddsidemargin}{.125in}
+\setlength{\textwidth}{6.25in}
+\input{preamble}
+% \makeatletter
+%  \fancyhf{}
+%  \rhead{Table of Variables and Parameters}
+%  \lhead{\@author}
+% \makeatother
+% \fancyfoot[LE,RO]{\thepage}
+\usepackage{color}
+\usepackage{hyperref}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\hypersetup{pdftex=true, colorlinks=true, breaklinks=true, linkcolor=darkblue, 
+menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
+\begin{document}
+\subfile{foc.tex}
+\subfile{parameters_table.tex}
+\newpage
+\subfile{variables_table.tex}
+\end{document}
