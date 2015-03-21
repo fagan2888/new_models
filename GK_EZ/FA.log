@@ -1,0 +1,88 @@
+Starting Dynare (version 4.4.2).
+Starting preprocessing of the model file ...
+Found 34 equation(s).
+Evaluating expressions...done
+Computing static model derivatives:
+ - order 1
+Computing dynamic model derivatives:
+ - order 1
+Processing outputs ...done
+Preprocessing completed.
+Starting MATLAB/Octave computing.
+
+EIGENVALUES:
+         Modulus             Real        Imaginary
+
+       3.398e-17        3.398e-17                0
+       1.825e-16        1.825e-16                0
+       5.193e-16        5.193e-16                0
+       8.015e-16       -8.015e-16                0
+          0.2308           0.2308                0
+            0.66             0.66                0
+           0.779            0.779                0
+          0.8357           0.8302          0.09603
+          0.8357           0.8302         -0.09603
+            0.95             0.95                0
+            0.95             0.95                0
+           0.966            0.966                0
+            0.99             0.99                0
+           1.019            1.019                0
+           1.048            1.048                0
+           1.218            1.139           0.4312
+           1.218            1.139          -0.4312
+           1.232            1.232                0
+           1.297            1.297                0
+       1.702e+14       -1.702e+14                0
+       8.088e+15        8.088e+15                0
+       1.354e+18        1.354e+18                0
+       1.234e+20        1.234e+20                0
+       1.162e+21       -1.162e+21                0
+             Inf              Inf                0
+             Inf              Inf                0
+
+
+There are 13 eigenvalue(s) larger than 1 in modulus 
+for 14 forward-looking variable(s)
+
+The rank condition ISN'T verified!
+
+{Error using <a href="matlab:helpUtils.errorDocCallback('print_info', '/Applications/Dynare/4.4.2/matlab/print_info.m', 45)" style="font-weight:bold">print_info</a> (<a href="matlab: opentoline('/Applications/Dynare/4.4.2/matlab/print_info.m',45,0)">line 45</a>)
+Blanchard Kahn conditions are not satisfied: indeterminacy
+
+Error in <a href="matlab:helpUtils.errorDocCallback('stoch_simul', '/Applications/Dynare/4.4.2/matlab/stoch_simul.m', 98)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/4.4.2/matlab/stoch_simul.m',98,0)">line 98</a>)
+    print_info(info, options_.noprint, options_);
+
+Error in <a href="matlab:helpUtils.errorDocCallback('FA', '/Users/max/Documents/matlab/master_thesis_models/GK_different_utility Kopie 2/FA.m', 455)" style="font-weight:bold">FA</a> (<a href="matlab: opentoline('/Users/max/Documents/matlab/master_thesis_models/GK_different_utility Kopie 2/FA.m',455,0)">line 455</a>)
+info = stoch_simul(var_list_);
+
+Error in <a href="matlab:helpUtils.errorDocCallback('dynare', '/Applications/Dynare/4.4.2/matlab/dynare.m', 180)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/4.4.2/matlab/dynare.m',180,0)">line 180</a>)
+evalin('base',fname) ;
+} 
+clear
+clc
+dynare FA
+
+Configuring Dynare ...
+[mex] Generalized QZ.
+[mex] Sylvester equation solution.
+[mex] Kronecker products.
+[mex] Sparse kronecker products.
+[mex] Local state space iteration (second order).
+[mex] Bytecode evaluation.
+[mex] k-order perturbation solver.
+[mex] k-order solution simulation.
+[mex] Quasi Monte-Carlo sequence (Sobol).
+[mex] Markov Switching SBVAR.
+
+Starting Dynare (version 4.4.2).
+Starting preprocessing of the model file ...
+Found 34 equation(s).
+Evaluating expressions...done
+Computing static model derivatives:
+ - order 1
+Computing dynamic model derivatives:
+ - order 1
+Processing outputs ...done
+Preprocessing completed.
+Starting MATLAB/Octave computing.
+
