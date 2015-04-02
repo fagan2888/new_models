@@ -1,11 +1,11 @@
 % Author: Max Lampe
-% Last Change: 07.03.2015
+% Last Change: 24.03.2015
 % to Do: 
 % - function for csolve steady state
 % - trnsformed variables back into levels
 % - reduce system by extra variables: Keff, w, VMPK, prem, Welf  
 
-function yf=FA_EZ_stst_csolve(n)
+function yf=FA_stst_csolve(n)
 [rows,cols] = size(n);
 j=1;
 while j<=cols;
@@ -46,10 +46,7 @@ delta_c=0.02041451;
 G_ss       =   0.16975710;
 I_ss       =   0.14153927;
 
-gammaEZ = 2;
-psiEZ = 0.5;
-thetaEZ = (1-gammaEZ)/(1-1/psiEZ);
-nuEZ = 0.3622;
+nuEZ = 0.33;
 
 
 %%%%%%%%%%%%% reducing the system of equation %%%%%%%%%%%%% 
@@ -82,14 +79,14 @@ infl = n(count,j); count = count+1;
 inflstar = n(count,j); count = count+1;
 nu = n(count,j); count = count+1;
 phi = n(count,j); count = count+1;
-v = n(count,j); count = count+1;
+% varrho = n(count,j); count = count+1;
 x = n(count,j);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 count=1;
 % Stochastic discount rate
-Lambda = 1^((1-gammaEZ)/thetaEZ)*1^(1-1/thetaEZ);
+Lambda = 1;
 
 % Markup
 X=1/Pm;
@@ -100,19 +97,15 @@ ksi=1;
 g=1;
 z=x;
 
-%// 0.1 Utility
-u = C^nuEZ*(1-L)^(1-nuEZ);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEFINE SYSTEM:
 
-% EZ Zin Preferences
-%1% // 0.3 Value Function
-yf(count,j) = ((1-betta)*u^((1-gammaEZ)/thetaEZ) + betta*((v^(1-gammaEZ))^(1/thetaEZ)))^(thetaEZ/(1-gammaEZ))- v;
-count = count +1;
 
-%2% // 0.4 Static Leisure-Consumption
-yf(count,j) = Pm*(1-alfa)*Y/L - (1-nuEZ)/nuEZ*C/(1-L);
+%//1.  Marginal utility of consumption
+% yf(count,j) = nuEZ * C^(nuEZ-1) * (1-L)^(1-nuEZ) - varrho;
+% count = count +1;
+yf(count,j) = C/(1-L) *(1-nuEZ)/nuEZ - Pm*(1-alfa)*Y/L;
 count = count +1;
 
 % //Financial Intermediaries

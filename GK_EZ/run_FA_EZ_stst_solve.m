@@ -62,11 +62,12 @@ steady_paper = steady_paper(2:end)';
 initial = steady_paper;
 %%
 [SS_csolve, rc]=csolve(@FA_EZ_stst_csolve,initial,[],1e-12,10000);
+tab=table(variablesSS, SS_csolve);
+openvar('tab');
 
 %%
 [SS_fsolve,fval,exitflag]=fsolve(@FA_EZ_stst_fsolve,SS_csolve);
-
-%%
-diff = SS_csolve - SS_fsolve;
 outTable = table(variablesSS,  SS_fsolve, SS_csolve, diff);
 openvar('outTable');
+%%
+diff = SS_csolve - SS_fsolve;

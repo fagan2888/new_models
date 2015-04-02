@@ -4,11 +4,12 @@
 // - exchange utility fucntion Household
 // - Epstein Zin rekursive utility function
 // - change of Initial values defined in the initial block
-// Problem: Blanchard Kahn conditions not satisfied (rank condition)
+// - Blanchard conditions fullfiled
+// - 
 
 
-parameters betta sig varphi zetta theta alfa G_over_Y eta_i epsilon gam gam_P kappa_pi kappa_y rho_i rho_ksi sigma_ksi rho_a sigma_a rho_g sigma_g sigma_Ne sigma_i rho_shock_psi sigma_psi kappa tau omega lambda chi b delta_c G_ss I_ss nuEZ psiEZ gammaEZ thetaEZ;
-var Y Ym K L I C G Q Lambda Rk R N Ne Nn nu eta phi z x Pm U X D F Z i delta In a ksi g infl inflstar v ;
+parameters betta sig varphi zetta theta alfa G_over_Y eta_i epsilon gam gam_P kappa_pi kappa_y rho_i rho_ksi sigma_ksi rho_a sigma_a rho_g sigma_g sigma_Ne sigma_i rho_shock_psi sigma_psi kappa tau omega lambda chi b delta_c G_ss I_ss nuEZ psiEZ gammaEZ thetaEZ cte;
+var Y Ym K L I C G Q Lambda Rk R N Ne Nn nu eta phi z x Pm U X D F Z i delta In a ksi g infl inflstar v u ev;
 varexo e_a e_ksi e_g e_Ne e_i ;
 
 betta=0.99000000;
@@ -48,22 +49,27 @@ I_ss       =   0.14153927;
 gammaEZ = 2;
 psiEZ = 0.5;
 thetaEZ = (1-gammaEZ)/(1-1/psiEZ);
-nuEZ = 0.3622;
+nuEZ = 0.33;
+cte = (0.451610879111627^nuEZ*(1-0.292857916980711)^(1-nuEZ))^(-1);
 
 model;
 //Home household Epstein Zin Utility
 // 0.3 Value Function
-v = ((1-betta)*(exp(C)^nuEZ * (1-exp(L))^(1-nuEZ))^((1-gammaEZ)/thetaEZ)+ betta*(v(+1)^(1-gammaEZ))^(1/thetaEZ))^(thetaEZ/(1-gammaEZ));
 
-// 0.4 Static Leisure-Consumption
+u = cte*exp(C)^nuEZ*(1-exp(L))^(1-nuEZ);
+ev = v(+1)^(1-gammaEZ);
+v = ((1-betta)*u^((1-gammaEZ)/thetaEZ)+ betta*(ev^(1/thetaEZ)))^(thetaEZ/(1-gammaEZ));
+exp(Lambda) = (u(+1)/u)^((1-gammaEZ)/thetaEZ)*(exp(C)/exp(C(+1)))*(v(+1)^(1-gammaEZ)/ev)^(1-1/thetaEZ);
+betta*exp(Lambda)*exp(R(+1)) = 1;
 (1-nuEZ)/nuEZ*exp(C)/(1-exp(L)) = exp(Pm)*(1-alfa)*exp(Y)/exp(L);
 
+// v = ((1-betta)*(exp(C)^nuEZ * (1-exp(L))^(1-nuEZ))^((1-gammaEZ)/thetaEZ)+ betta*(v(+1)^(1-gammaEZ))^(1/thetaEZ))^(thetaEZ/(1-gammaEZ));
+// 0.4 Static Leisure-Consumption
+// (1-nuEZ)/nuEZ*exp(C)/(1-exp(L)) = exp(Pm)*(1-alfa)*exp(Y)/exp(L);
 // 0.5 stochastic discount rate
- exp(Lambda) = ((exp(C(+1))^nuEZ*(1-exp(L(+1)))^(1-nuEZ))/(exp(C)^nuEZ*(1-exp(L))^(1-nuEZ)))^((1-gammaEZ)/thetaEZ)*(exp(C)/exp(C(+1)))*(v(+1)^(1-gammaEZ)/(v(+1)^(1-gammaEZ)))^(1-1/thetaEZ);
-
-
+//  exp(Lambda) = ((exp(C(+1))^nuEZ*(1-exp(L(+1)))^(1-nuEZ))/(exp(C)^nuEZ*(1-exp(L))^(1-nuEZ)))^((1-gammaEZ)/thetaEZ)*(exp(C)/exp(C(+1)))*(v(+1)^(1-gammaEZ)/(v(+1)^(1-gammaEZ)))^(1-1/thetaEZ);
 // 0.6 Euler Equation for Capital
-betta * exp(Lambda) * exp(R(+1)) = 1;
+// betta * exp(Lambda) * exp(R(+1)) = 1;
 
 //Financial Intermediaries
 //5. Value of banks' capital
@@ -178,33 +184,33 @@ end;
 
 
 initval;
-C = log(0.933563706303051);
-D = log(0.999999999977671);
-F = log(4.39862199740600);
+C = log(0.451610879111627);
+D = log(1.000000000000000);
+F = log(2.477215009286168);
 G = log(0.169757100000000);
-I = log(0.220804595826495);
-In = 8.816349444137375e-16; 
-K = log(8.83218421212180);
-L = log(0.520007859996197);
-N = log(2.20804593505344);
-Ne = log(2.18836977170939);
-Nn = log(0.0196761633440805);
-Pm = log(0.760019198461922);
+I = log(0.169757100000000);
+In = 0; 
+K = log(4.974107642854883);
+L = log(0.292857916980711);
+N = log(1.243526844272020);
+Ne = log(1.232445626747421);
+Nn = log(0.011081217524599);
+Pm = log(0.760019198464123);
 Q = log(1);
-Rk = log(1.01260101027508);
-U = log(1.01260101027508);
-Y = log(1.01260101027508);
-Ym = log(1.32412540210478);
-Z = log(5.78751432372325);
-delta = log(0.0249999989271003);
-eta = log(1.51102093246158);
-i = log(1.01010101010122);
+Rk = log(1.012601010275084);
+U = log(0.999999997412428);
+Y = log(0.745720664846253);
+Ym = log(0.745720664846254);
+Z = log(3.259411096841005);
+delta = log(0.024999998927095);
+eta = log(1.511020932460962);
+i = log(1.010101010101010);
 infl = log(1.00000000000000);
 inflstar = log(1.00000000000000);
-nu = log(0.00373977706824209);
-phi = log(4.00000021372187);
-v =  log(0.715451215774976);
-x = log(1.02010101133161);
+nu = log(0.003739777068239);
+phi = log(4.000000213720197);
+v =  log(0.609876260046773);
+x = log(1.020101011331604);
 Lambda = log(1^((1-gammaEZ)/thetaEZ)*1^(1-1/thetaEZ));
 X=-Pm;
 R = Lambda-log(betta);
@@ -217,6 +223,11 @@ e_ksi=0.00000000;
 e_g=0.00000000;
 e_Ne=0.00000000;
 e_i=0.00000000;
+
+u = 1;
+v = 1;
+ev = 1^(1-gammaEZ);
+
 end;
 
 shocks;

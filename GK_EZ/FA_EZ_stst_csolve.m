@@ -49,7 +49,7 @@ I_ss       =   0.14153927;
 gammaEZ = 2;
 psiEZ = 0.5;
 thetaEZ = (1-gammaEZ)/(1-1/psiEZ);
-nuEZ = 0.3622;
+nuEZ = 0.33;
 
 
 %%%%%%%%%%%%% reducing the system of equation %%%%%%%%%%%%% 

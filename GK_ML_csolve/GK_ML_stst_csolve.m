@@ -105,19 +105,6 @@ z=x;
 %//1.  Marginal utility of consumption
 % yf(count,j) = nuEZ * C^(nuEZ-1) * (1-L)^(1-nuEZ) - varrho;
 % count = count +1;
-
-
-%//2.  Marginal utility of labor
-% yf(count,j) = (1-nuEZ) * C^(nuEZ) * (1-L)^(-nuEZ) + varrho * Pm*(1-alfa)*Y/L;
-% count = count +1;
-
-
-%//2. Euler equation
-% yf(count,j) = betta*exp(R)*exp(Lambda(+1)) -1;
-
-%//3. Stochastic discount rate
-% yf(count,j) =   exp(varrho)/exp(varrho(-1)) -  exp(Lambda) ;
-
 yf(count,j) = C/(1-L) *(1-nuEZ)/nuEZ - Pm*(1-alfa)*Y/L;
 count = count +1;
 
