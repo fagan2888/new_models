@@ -56,20 +56,22 @@ model;
 //Home household Epstein Zin Utility
 // 0.3 Value Function
 
+// Eppstein Zin Utility function 
 u = cte*exp(C)^nuEZ*(1-exp(L))^(1-nuEZ);
 ev = v(+1)^(1-gammaEZ);
 v = ((1-betta)*u^((1-gammaEZ)/thetaEZ)+ betta*(ev^(1/thetaEZ)))^(thetaEZ/(1-gammaEZ));
+
+
+// stochastic discount factor (kernel)
 exp(Lambda) = (u(+1)/u)^((1-gammaEZ)/thetaEZ)*(exp(C)/exp(C(+1)))*(v(+1)^(1-gammaEZ)/ev)^(1-1/thetaEZ);
+
+// Eulerequation
 betta*exp(Lambda)*exp(R(+1)) = 1;
+
+// Marginal rate for labor and consumption
 (1-nuEZ)/nuEZ*exp(C)/(1-exp(L)) = exp(Pm)*(1-alfa)*exp(Y)/exp(L);
 
-// v = ((1-betta)*(exp(C)^nuEZ * (1-exp(L))^(1-nuEZ))^((1-gammaEZ)/thetaEZ)+ betta*(v(+1)^(1-gammaEZ))^(1/thetaEZ))^(thetaEZ/(1-gammaEZ));
-// 0.4 Static Leisure-Consumption
-// (1-nuEZ)/nuEZ*exp(C)/(1-exp(L)) = exp(Pm)*(1-alfa)*exp(Y)/exp(L);
-// 0.5 stochastic discount rate
-//  exp(Lambda) = ((exp(C(+1))^nuEZ*(1-exp(L(+1)))^(1-nuEZ))/(exp(C)^nuEZ*(1-exp(L))^(1-nuEZ)))^((1-gammaEZ)/thetaEZ)*(exp(C)/exp(C(+1)))*(v(+1)^(1-gammaEZ)/(v(+1)^(1-gammaEZ)))^(1-1/thetaEZ);
-// 0.6 Euler Equation for Capital
-// betta * exp(Lambda) * exp(R(+1)) = 1;
+
 
 //Financial Intermediaries
 //5. Value of banks' capital
