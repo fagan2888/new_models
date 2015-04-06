@@ -405,58 +405,6 @@ nuEZ = M_.params( 34 );
 M_.params( 38 ) = (0.451610879111627^M_.params(34)*0.7071420830192889^(1-M_.params(34)))^(-1);
 cte = M_.params( 38 );
 %
-% INITVAL instructions
-%
-options_.initval_file = 0;
-oo_.steady_state( 6 ) = (-0.7949343568470433);
-oo_.steady_state( 23 ) = 0;
-oo_.steady_state( 24 ) = 0.9071349490357078;
-oo_.steady_state( 7 ) = (-1.773386687203001);
-oo_.steady_state( 5 ) = (-1.773386687203001);
-oo_.steady_state( 28 ) = 0;
-oo_.steady_state( 3 ) = 1.604245986251769;
-oo_.steady_state( 4 ) = (-1.228067712559721);
-oo_.steady_state( 12 ) = 0.2179515717018301;
-oo_.steady_state( 13 ) = 0.2090005097322857;
-oo_.steady_state( 14 ) = (-4.502503718808295);
-oo_.steady_state( 20 ) = (-0.2744115848838135);
-oo_.steady_state( 8 ) = 0;
-oo_.steady_state( 10 ) = 0.01252227825718745;
-oo_.steady_state( 21 ) = (-2.587572048868168e-09);
-oo_.steady_state( 1 ) = (-0.2934041928058276);
-oo_.steady_state( 2 ) = (-0.2934041928058262);
-oo_.steady_state( 25 ) = 1.181546533919522;
-oo_.steady_state( 27 ) = (-3.688879497030137);
-oo_.steady_state( 16 ) = 0.4127855365771483;
-oo_.steady_state( 26 ) = 0.01005033585350129;
-oo_.steady_state( 32 ) = 0;
-oo_.steady_state( 33 ) = 0;
-oo_.steady_state( 15 ) = (-5.588729276755017);
-oo_.steady_state( 17 ) = 1.386294414549939;
-oo_.steady_state( 34 ) = (-0.4944991947744468);
-oo_.steady_state( 19 ) = 0.01990165311022079;
-oo_.steady_state( 9 ) = 0;
-oo_.steady_state( 22 ) = (-oo_.steady_state(20));
-oo_.steady_state( 11 ) = oo_.steady_state(9)-log(M_.params(1));
-oo_.steady_state( 29 ) = 0;
-oo_.steady_state( 30 ) = 0;
-oo_.steady_state( 31 ) = 0;
-oo_.steady_state( 18 ) = oo_.steady_state(19);
-oo_.exo_steady_state( 1 ) = 0.00000000;
-oo_.exo_steady_state( 2 ) = 0.00000000;
-oo_.exo_steady_state( 3 ) = 0.00000000;
-oo_.exo_steady_state( 4 ) = 0.00000000;
-oo_.exo_steady_state( 5 ) = 0.00000000;
-oo_.steady_state( 35 ) = 1;
-oo_.steady_state( 34 ) = 1;
-oo_.steady_state( 36 ) = 1;
-if M_.exo_nbr > 0;
-	oo_.exo_simul = [ones(M_.maximum_lag,1)*oo_.exo_steady_state'];
-end;
-if M_.exo_det_nbr > 0;
-	oo_.exo_det_simul = [ones(M_.maximum_lag,1)*oo_.exo_det_steady_state'];
-end;
-%
 % SHOCKS instructions
 %
 make_ex_;
@@ -464,7 +412,9 @@ M_.exo_det_length = 0;
 M_.Sigma_e(2, 2) = M_.params(16)^2;
 M_.sigma_e_is_diagonal = 1;
 oo_.dr.eigval = check(M_,options_,oo_);
+steady;
 options_.irf = 40;
+options_.nograph = 1;
 options_.order = 2;
 options_.periods = 2000;
 options_.pruning = 1;
